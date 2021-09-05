@@ -4,17 +4,16 @@ import javax.validation.constraints.NotBlank;
 
 public class CreateAccount {
 
-    @NotBlank(message = "customer is required")
-    private Long customerId;
+    //@NotBlank(message = "customer is required")
+    private long customerId;
 
-    @NotBlank(message = "Email is required")
     private double initialCredit;
 
-    public Long getCustomerId() {
+    public long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Long customerId) {
+    public void setCustomerId(long customerId) {
         this.customerId = customerId;
     }
 

@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.PositiveOrZero;
+import java.util.Date;
 
 @Entity
 public class Account {
@@ -16,14 +17,17 @@ public class Account {
     @PositiveOrZero
     private double initialCredit;
 
-    private long balance;
+    private double balance;
+
+    private Date createdAt;
 
     public Account() {
     }
 
-    public Account(Long customerId, double initialCredit) {
+    public Account(Long customerId, double initialCredit, Date createdAt) {
         this.customerId = customerId;
         this.initialCredit = initialCredit;
+        this.createdAt = createdAt;
     }
 
     public Long getId() {
@@ -50,15 +54,23 @@ public class Account {
         this.initialCredit = initialCredit;
     }
 
-    public long getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(long balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
-    public void addBalance(long transactionAmount) {
+    /*public void addBalance(long transactionAmount) {
         balance += transactionAmount;
+    }*/
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }
