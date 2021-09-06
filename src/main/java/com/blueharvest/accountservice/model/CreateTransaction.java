@@ -1,21 +1,13 @@
 package com.blueharvest.accountservice.model;
 
+public class CreateTransaction {
 
-import java.util.Date;
-
-public class Transaction {
-
-    private long id;
     private long accountId;
     private double amount;
-    private Date transactionDate;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public CreateTransaction(long accountId, double amount) {
+        this.accountId = accountId;
+        this.amount = amount;
     }
 
     public long getAccountId() {
@@ -32,13 +24,5 @@ public class Transaction {
 
     public void setAmount(double amount) {
         this.amount = amount;
-    }
-
-    public Date getTransactionDate() {
-        return transactionDate;
-    }
-
-    public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = transactionDate;
     }
 }

@@ -1,12 +1,12 @@
 package com.blueharvest.accountservice.model;
 
-import javax.validation.constraints.NotBlank;
+
+import javax.validation.constraints.PositiveOrZero;
 
 public class CreateAccount {
 
-    //@NotBlank(message = "customer is required")
     private long customerId;
-
+    @PositiveOrZero
     private double initialCredit;
 
     public long getCustomerId() {

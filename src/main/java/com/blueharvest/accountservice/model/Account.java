@@ -11,47 +11,34 @@ import java.util.Date;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Long customerId;
-
-    @PositiveOrZero
-    private double initialCredit;
-
+    private long id;
+    private long customerId;
     private double balance;
-
     private Date createdAt;
 
     public Account() {
     }
 
-    public Account(Long customerId, double initialCredit, Date createdAt) {
+    public Account(long customerId, double balance, Date createdAt) {
         this.customerId = customerId;
-        this.initialCredit = initialCredit;
+        this.balance = balance;
         this.createdAt = createdAt;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public Long getCustomerId() {
+    public long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Long customerId) {
+    public void setCustomerId(long customerId) {
         this.customerId = customerId;
-    }
-
-    public double getInitialCredit() {
-        return initialCredit;
-    }
-
-    public void setInitialCredit(double initialCredit) {
-        this.initialCredit = initialCredit;
     }
 
     public double getBalance() {
@@ -61,10 +48,6 @@ public class Account {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-
-    /*public void addBalance(long transactionAmount) {
-        balance += transactionAmount;
-    }*/
 
     public Date getCreatedAt() {
         return createdAt;

@@ -1,7 +1,8 @@
 package com.blueharvest.accountservice.service;
 
 import com.blueharvest.accountservice.model.BaseResponse;
-import com.blueharvest.accountservice.model.Transaction;
+import com.blueharvest.accountservice.model.CreateTransaction;
+import com.blueharvest.accountservice.model.TransactionServiceResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -26,10 +27,10 @@ public class RequestManagerImpl implements RequestManager {
         restTemplate = new RestTemplate();
     }
     @Override
-    public BaseResponse createTransaction(long accountId, double amount) {
+    public TransactionServiceResponse createTransaction(long accountId, double amount) {
         String url = baseUrl.concat(createEndpoint);
-        HttpEntity<Transaction> entity = new HttpEntity<>(new Transaction(accountId, amount));
-        ResponseEntity<BaseResponse> responseEntity = restTemplate.exchange(url, HttpMethod.POST, entity, BaseResponse.class);
+        HttpEntity<CreateTransaction> entity = new HttpEntity<>(new CreateTransaction(accountId, amount));
+        ResponseEntity<TransactionServiceResponse> responseEntity = restTemplate.exchange(url, HttpMethod.POST, entity, TransactionServiceResponse.class);
         return responseEntity.getBody();
     }
 }

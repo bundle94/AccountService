@@ -8,9 +8,6 @@ import com.blueharvest.accountservice.repository.AccountRepository;
 import com.blueharvest.accountservice.repository.CustomerRepository;
 import com.blueharvest.accountservice.util.ResponseCodes;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -41,8 +38,9 @@ public class AccountServiceImpl implements AccountService {
             throw new CustomerNotFoundException(ResponseCodes.CUSTOMER_NOT_FOUND.getMessage());
         }
         //create account
-        Account account = new Account(request.getCustomerId(), request.getInitialCredit(), new Date());
+        Account account = new Account(request.getCustomerId(), 0.00, new Date());
         accountRepository.save(account);
+        //check if
         if (request.getInitialCredit() > 0) {
             return response = createTransactionAndUpdateBalance(account.getId(), request.getInitialCredit());
         }
@@ -50,12 +48,17 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
+    /*@Override
+    public UserDetails fetchUserDetails(long id) {
+        customerRepository.fetchUserDetailsById(id);
+    }*/
+
     private BaseResponse createTransactionAndUpdateBalance(long accountId, double amount) {
-        BaseResponse response;
+        BaseResponse response = new BaseResponse();
         Account account = accountRepository.findById(accountId).orElse(null);
         if(account != null) {
-            response = requestManager.createTransaction(accountId, amount);
-            if(!response.getResponseCode().equals(ResponseCodes.SUCCESS.getCode())) {
+            TransactionServiceResponse res = requestManager.createTransaction(accountId, amount);
+            if(res.getError() == null && ResponseCodes.SUCCESS.getCode().equals(res.getResponseCode())) {
                 double currentBalance = account.getBalance();
                 currentBalance += amount;
                 account.setBalance(currentBalance);
