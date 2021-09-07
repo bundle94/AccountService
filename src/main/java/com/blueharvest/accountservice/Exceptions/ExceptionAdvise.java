@@ -44,13 +44,4 @@ public class ExceptionAdvise {
         response.setResponseMessage(e.getMessage());
         return response;
     }
-
-    /*@ExceptionHandler({MethodArgumentNotValidException.class})
-    @ResponseBody
-    public BaseResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-        BaseResponse response = new BaseResponse();
-        response.setResponseCode(StringUtils.hasText(e.getCode()) ? e.getCode() : ResponseCodes.ZERO_INITIAL_CREDIT.getCode());
-        response.setResponseMessage(e.);
-        return response;
-    }*/
 }

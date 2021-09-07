@@ -9,6 +9,11 @@ public class CreateAccount {
     @PositiveOrZero
     private double initialCredit;
 
+    public CreateAccount(long customerId, double initialCredit){
+        this.customerId = customerId;
+        this.initialCredit = initialCredit;
+    }
+
     public long getCustomerId() {
         return customerId;
     }
