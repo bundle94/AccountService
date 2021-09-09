@@ -1,14 +1,23 @@
 package com.blueharvest.accountservice.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.springframework.boot.jackson.JsonComponent;
+
 import java.util.Date;
 
-public class Transaction {
+@JsonComponent
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class TransactionData {
 
     private long id;
     private long accountId;
     private double amount;
     private Date transactionDate;
+
 
     public long getId() {
         return id;

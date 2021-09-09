@@ -5,7 +5,7 @@ import com.blueharvest.accountservice.model.BaseResponse;
 import com.blueharvest.accountservice.model.UserDetails;
 
 public interface AccountService {
-    BaseResponse createAccount(CreateAccount request) throws Exception;
-    //UserDetails fetchUserDetails(long id);
+    BaseResponse createAccount(CreateAccount request);
+    UserDetails fetchUserDetails(long id);
 
 }

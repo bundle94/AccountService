@@ -6,8 +6,7 @@ public class UserDetails {
 
     private String name;
     private String surname;
-    private double balance;
-    private List<Transaction> transaction;
+    private List<AccountDetail> accountDetails;
 
     public String getName() {
         return name;
@@ -25,19 +24,11 @@ public class UserDetails {
         this.surname = surname;
     }
 
-    public double getBalance() {
-        return balance;
+    public List<AccountDetail> getAccountDetails() {
+        return accountDetails;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public List<Transaction> getTransaction() {
-        return transaction;
-    }
-
-    public void setTransaction(List<Transaction> transaction) {
-        this.transaction = transaction;
+    public void setAccountDetails(List<AccountDetail> accountDetails) {
+        this.accountDetails = accountDetails;
     }
 }

@@ -24,18 +24,18 @@ public class AccountController {
     }
 
     @PostMapping("/create")
-    public Callable<ResponseEntity<BaseResponse>> createAccount(@RequestBody @Valid CreateAccount request) throws Exception {
+    public Callable<ResponseEntity<BaseResponse>> createAccount(@RequestBody @Valid CreateAccount request) {
         return () -> {
             BaseResponse response = accountService.createAccount(request);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         };
     }
 
-    /*@GetMapping("/fetch/{id}")
-    public Callable<ResponseEntity<UserDetails>> fetchUserDetails(@PathVariable("id") long id) throws Exception {
+    @GetMapping("/fetch/{customerId}")
+    public Callable<ResponseEntity<UserDetails>> fetchUserDetails(@PathVariable("customerId") long id) {
         return () -> {
             UserDetails response = accountService.fetchUserDetails(id);
             return new ResponseEntity<>(response, HttpStatus.OK);
         };
-    }*/
+    }
 }
